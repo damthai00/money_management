@@ -2,14 +2,14 @@ package damthai.com.moneymanagement.Model;
 
 public class GiaoDich {
  private int magiaodich;
- private int sotien;
+ private long sotien;
  private int nhom;
  private String ngaygiaodich;
  private String ghichu;
  private String hinhthucphi;
  private int mataikhoan;
 
-    public GiaoDich(int magiaodich, int sotien, int nhom, String ngaygiaodich, String ghichu, String hinhthucphi, int mataikhoan) {
+    public GiaoDich(int magiaodich, long sotien, int nhom, String ngaygiaodich, String ghichu, String hinhthucphi, int mataikhoan) {
         this.magiaodich = magiaodich;
         this.sotien = sotien;
         this.nhom = nhom;
@@ -19,7 +19,7 @@ public class GiaoDich {
         this.mataikhoan = mataikhoan;
     }
 
-    public GiaoDich(int sotien, int nhom, String ngaygiaodich, String ghichu, String hinhthucphi, int mataikhoan) {
+    public GiaoDich(long sotien, int nhom, String ngaygiaodich, String ghichu, String hinhthucphi, int mataikhoan) {
         this.sotien = sotien;
         this.nhom = nhom;
         this.ngaygiaodich = ngaygiaodich;
@@ -36,11 +36,11 @@ public class GiaoDich {
         this.magiaodich = magiaodich;
     }
 
-    public int getSotien() {
+    public long getSotien() {
         return sotien;
     }
 
-    public void setSotien(int sotien) {
+    public void setSotien(long sotien) {
         this.sotien = sotien;
     }
 

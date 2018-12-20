@@ -6,14 +6,14 @@
 
     <TextView
         android:id="@+id/txt_dsnhom_tennhom"
-        android:textSize="25dp"
+        android:textSize="15dp"
         android:text="Tên nhóm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/holo_red_dark"/>
     <TextView
         android:id="@+id/txt_dsnhom_loai"
-        android:textSize="15dp"
+        android:textSize="13dp"
         android:text="loại"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

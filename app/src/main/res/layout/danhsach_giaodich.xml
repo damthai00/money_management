@@ -22,13 +22,13 @@
         <TextView
             android:id="@+id/txt_danhsach_giaoidich_tennhom"
             android:textColor="@color/color_ten_nhom"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:text="Ăn uống"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
         <TextView
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:id="@+id/txt_danhsach_giaoidich_sotien"
             android:text="111111111"
             android:textColor="@color/color_chi_tieu"

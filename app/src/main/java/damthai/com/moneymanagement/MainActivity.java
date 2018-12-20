@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
             int mataikhoan = bundle.getInt("mataikhoan");
             String tentaikhoan = bundle.getString("tentaikhoan");
             String matkhau = bundle.getString("matkhau");
-            int taikhoanthe = bundle.getInt("taikhoanthe");
-            int tienmat = bundle.getInt("tienmat");
+            long taikhoanthe = bundle.getLong("taikhoanthe");
+            long tienmat = bundle.getLong("tienmat");
             taikhoan_using.setMataikhoan(mataikhoan);
             taikhoan_using.setTentaikhoan(tentaikhoan);
             taikhoan_using.setMatkhau(matkhau);
@@ -106,12 +106,12 @@ public class MainActivity extends AppCompatActivity {
         bundle.putInt("mataikhoan",taikhoan_using.getMataikhoan());
         bundle.putString("tentaikhoan",taikhoan_using.getTentaikhoan());
         bundle.putString("matkhau",taikhoan_using.getMatkhau());
-        bundle.putInt("taikhoanthe",taikhoan_using.getTaikhoanthe());
-        bundle.putInt("tienmat",taikhoan_using.getTienmat());
+        bundle.putLong("taikhoanthe",taikhoan_using.getTaikhoanthe());
+        bundle.putLong("tienmat",taikhoan_using.getTienmat());
         return bundle;
     }
 
-    public void setTaikhoan_using(int taikhoanthe,int tienmat)
+    public void setTaikhoan_using(long taikhoanthe,long tienmat)
     {
         this.taikhoan_using.setTaikhoanthe(taikhoanthe);
         this.taikhoan_using.setTienmat(tienmat);

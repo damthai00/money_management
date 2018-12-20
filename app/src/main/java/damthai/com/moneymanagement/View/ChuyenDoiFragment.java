@@ -87,8 +87,8 @@ public class ChuyenDoiFragment extends Fragment
             int mataikhoan = bundle.getInt("mataikhoan");
             String tentaikhoan = bundle.getString("tentaikhoan");
             String matkhau = bundle.getString("matkhau");
-            int taikhoanthe = bundle.getInt("taikhoanthe");
-            int tienmat = bundle.getInt("tienmat");
+            long taikhoanthe = bundle.getLong("taikhoanthe");
+            long tienmat = bundle.getLong("tienmat");
             taikhoan_using.setMataikhoan(mataikhoan);
             taikhoan_using.setTentaikhoan(tentaikhoan);
             taikhoan_using.setMatkhau(matkhau);
@@ -101,12 +101,12 @@ public class ChuyenDoiFragment extends Fragment
         PresenterLogicChuyenDoi presenterLogicChuyenDoi = new PresenterLogicChuyenDoi();
         taikhoan_using  = presenterLogicChuyenDoi.LoadDuLieu(taikhoan_using);
 
-        String taikhoanthe = Integer.toString(taikhoan_using.getTaikhoanthe());
-        String tienmat = Integer.toString(taikhoan_using.getTienmat());
+        String taikhoanthe = Long.toString(taikhoan_using.getTaikhoanthe());
+        String tienmat = Long.toString(taikhoan_using.getTienmat());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 
-        edt_chuyendoi_taikhoanthe.setText(decimalFormat.format(Integer.parseInt(taikhoanthe)));
-        edt_chuyendoi_tienmat.setText(decimalFormat.format(Integer.parseInt(tienmat)));
+        edt_chuyendoi_taikhoanthe.setText(decimalFormat.format(Long.parseLong(taikhoanthe)));
+        edt_chuyendoi_tienmat.setText(decimalFormat.format(Long.parseLong(tienmat)));
         edt_chuyendoi_sotien.setText("");
         edt_chuyendoi_phi.setText("");
         edt_chuyendoi_taikhoanthe.setEnabled(false);

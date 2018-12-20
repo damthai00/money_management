@@ -52,8 +52,8 @@ public class GiaoDichFragment extends Fragment {
             int mataikhoan = bundle.getInt("mataikhoan");
             String tentaikhoan = bundle.getString("tentaikhoan");
             String matkhau = bundle.getString("matkhau");
-            int taikhoanthe = bundle.getInt("taikhoanthe");
-            int tienmat = bundle.getInt("tienmat");
+            long taikhoanthe = bundle.getLong("taikhoanthe");
+            long tienmat = bundle.getLong("tienmat");
             taikhoan_using.setMataikhoan(mataikhoan);
             taikhoan_using.setTentaikhoan(tentaikhoan);
             taikhoan_using.setMatkhau(matkhau);
@@ -67,8 +67,8 @@ public class GiaoDichFragment extends Fragment {
         getTaiKhoan_DangSuDung();
         PresenterLogicGiaoDich presenterLogicGiaoDich = new PresenterLogicGiaoDich();
         taikhoan_using = presenterLogicGiaoDich.LoadDuLieu_TaiKhoan(taikhoan_using);
-        int taikhoanthe = taikhoan_using.getTaikhoanthe();
-        int tienmat = taikhoan_using.getTienmat();
+        long taikhoanthe = taikhoan_using.getTaikhoanthe();
+        long tienmat = taikhoan_using.getTienmat();
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         edt_giaodich_taikhoanthe.setText(decimalFormat.format(taikhoanthe));
         edt_giaodich_tienmat.setText(decimalFormat.format(tienmat));

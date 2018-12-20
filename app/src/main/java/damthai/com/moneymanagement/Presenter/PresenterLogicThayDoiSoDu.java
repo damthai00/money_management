@@ -21,7 +21,7 @@ public class PresenterLogicThayDoiSoDu implements PresenterImpThayDoiSoDu {
         if (soduthaydoi.equals(""))
             viewImpThayDoiSoDu.ChuaNhapGiaTriThayDoi();
         else {
-            taiKhoan.setTaikhoanthe(Integer.parseInt(soduthaydoi));
+            taiKhoan.setTaikhoanthe(Long.parseLong(soduthaydoi));
             final DBManager dbManager = new DBManager(MainActivity.getInstance());
             dbManager.updateTaikhoan(taiKhoan);
             viewImpThayDoiSoDu.ThayDoiThanhCong();
@@ -33,7 +33,7 @@ public class PresenterLogicThayDoiSoDu implements PresenterImpThayDoiSoDu {
         if(soduthaydoi.equals(""))
             viewImpThayDoiSoDu.ChuaNhapGiaTriThayDoi();
         else {
-            taiKhoan.setTienmat(Integer.parseInt(soduthaydoi));
+            taiKhoan.setTienmat(Long.parseLong(soduthaydoi));
             final DBManager dbManager = new DBManager(MainActivity.getInstance());
             dbManager.updateTaikhoan(taiKhoan);
             viewImpThayDoiSoDu.ThayDoiThanhCong();

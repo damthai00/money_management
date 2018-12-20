@@ -89,7 +89,8 @@ public class  DBManager extends SQLiteOpenHelper {
         int indexTaiKhoanThe = cursor.getColumnIndex(TKT);
         int indexTienMat = cursor.getColumnIndex(TM);
 
-        int mataikhoan,taikhoanthe,tienmat;
+        int mataikhoan;
+        long taikhoanthe,tienmat;
         String tentaikhoan,matkhau;
         cursor.moveToFirst();
         ArrayList<TaiKhoan> list = new ArrayList<>();
@@ -97,8 +98,8 @@ public class  DBManager extends SQLiteOpenHelper {
             mataikhoan = cursor.getInt(indexMaTaiKhoan);
             tentaikhoan = cursor.getString(indexTenTaiKhoan);
             matkhau = cursor.getString(indexMatKhau);
-            taikhoanthe = cursor.getInt(indexTaiKhoanThe);
-            tienmat = cursor.getInt(indexTienMat);
+            taikhoanthe = cursor.getLong(indexTaiKhoanThe);
+            tienmat = cursor.getLong(indexTienMat);
             list.add(new TaiKhoan(mataikhoan,tentaikhoan,matkhau,taikhoanthe,tienmat));
             cursor.moveToNext();
         }
@@ -209,7 +210,8 @@ public class  DBManager extends SQLiteOpenHelper {
         int indexHinhThucPhi = cursor.getColumnIndex("hinhthucphi");
         int indexMaTaiKhoan = cursor.getColumnIndex("mataikhoan");
 
-        int magiaodich,sotien,nhom,mataikhoan;
+        int magiaodich,nhom,mataikhoan;
+        long sotien;
         String ngaygiaodich,ghichu,hinhthucphi;
 
         cursor.moveToFirst();
@@ -220,7 +222,7 @@ public class  DBManager extends SQLiteOpenHelper {
             else
                 {
                 magiaodich = cursor.getInt(indexMaGiaoDich);
-                sotien = cursor.getInt(indexSoTien);
+                sotien = cursor.getLong(indexSoTien);
                 nhom = cursor.getInt(indexNhom);
                 ngaygiaodich = cursor.getString(indexNgayGiaoDich);
                 ghichu = cursor.getString(indexGhiChu);

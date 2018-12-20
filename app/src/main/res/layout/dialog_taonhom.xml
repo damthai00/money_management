@@ -13,7 +13,9 @@
         android:id="@+id/edt_taonhom_tennhom"
         android:hint="Tên nhóm:"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxLength="15"/>
 
     <TextView
         android:id="@+id/txtV_taonhom_loaithanhtoan"

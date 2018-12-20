@@ -3,10 +3,11 @@ package damthai.com.moneymanagement.Model;
 
 
 public class TaiKhoan {
-    private int mataikhoan,taikhoanthe,tienmat;
+    private long taikhoanthe,tienmat;
+    private int mataikhoan;
     private String tentaikhoan,matkhau;
 
-    public TaiKhoan(int mataikhoan, String tentaikhoan, String matkhau,int taikhoanthe,int tienmat) {
+    public TaiKhoan(int mataikhoan, String tentaikhoan, String matkhau,long taikhoanthe,long tienmat) {
         this.mataikhoan = mataikhoan;
         this.taikhoanthe = taikhoanthe;
         this.tienmat = tienmat;
@@ -14,7 +15,7 @@ public class TaiKhoan {
         this.matkhau = matkhau;
     }
 
-    public TaiKhoan( String tentaikhoan, String matkhau,int taikhoanthe,int tienmat) {
+    public TaiKhoan( String tentaikhoan, String matkhau,long taikhoanthe,long tienmat) {
         this.taikhoanthe = taikhoanthe;
         this.tienmat = tienmat;
         this.tentaikhoan = tentaikhoan;
@@ -33,19 +34,19 @@ public class TaiKhoan {
         this.mataikhoan = mataikhoan;
     }
 
-    public int getTaikhoanthe() {
+    public long getTaikhoanthe() {
         return taikhoanthe;
     }
 
-    public void setTaikhoanthe(int taikhoanthe) {
+    public void setTaikhoanthe(long taikhoanthe) {
         this.taikhoanthe = taikhoanthe;
     }
 
-    public int getTienmat() {
+    public long getTienmat() {
         return tienmat;
     }
 
-    public void setTienmat(int tienmat) {
+    public void setTienmat(long tienmat) {
         this.tienmat = tienmat;
     }
 

@@ -38,11 +38,11 @@ public class PresenterLogicChuyenDoi implements PresenterImpChuyenDoi{
                 }else {
                     if(phi.getText().toString().equals(""))
                         phi.setText("0");
-                    int sotien_taikhoanthe,sotien_tienmat,sotien_them,sotien_phi;
+                    long sotien_taikhoanthe,sotien_tienmat,sotien_them,sotien_phi;
                     sotien_taikhoanthe = taiKhoan.getTaikhoanthe();
                     sotien_tienmat = taiKhoan.getTienmat();
-                    sotien_them = Integer.parseInt(String.valueOf(sotien.getText()));
-                    sotien_phi = Integer.parseInt(String.valueOf(phi.getText()));
+                    sotien_them = Long.parseLong(String.valueOf(sotien.getText()));
+                    sotien_phi = Long.parseLong(String.valueOf(phi.getText()));
 
                     if(ruttien.isChecked()==true && tienmat.isChecked()==true)
                     {

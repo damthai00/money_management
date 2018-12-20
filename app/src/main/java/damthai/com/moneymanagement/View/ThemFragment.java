@@ -170,12 +170,13 @@ public class ThemFragment extends Fragment {
             public void onClick(View v) {
                 ViewThem viewThem = new ViewThem();
                 PresenterLogicThem presenterLogicThem = new PresenterLogicThem(viewThem);
-                int sotien,nhom,mataikhoan;
+                int nhom,mataikhoan;
+                long sotien;
                 String ngaygiaodich,ghichu,hinhthucphi = "";
 
                 if(edt_them_sotien.getText().toString().equals(""))
                     sotien = -1;
-                else sotien = (Integer.parseInt(edt_them_sotien.getText().toString()));
+                else sotien = (Long.parseLong(edt_them_sotien.getText().toString()));
                 if(edt_them_nhom.getText().toString().equals(""))
                  {
                      nhom = -1;
@@ -233,8 +234,8 @@ public class ThemFragment extends Fragment {
             int mataikhoan = bundle.getInt("mataikhoan");
             String tentaikhoan = bundle.getString("tentaikhoan");
             String matkhau = bundle.getString("matkhau");
-            int taikhoanthe = bundle.getInt("taikhoanthe");
-            int tienmat = bundle.getInt("tienmat");
+            long taikhoanthe = bundle.getLong("taikhoanthe");
+            long tienmat = bundle.getLong("tienmat");
             taikhoan_using.setMataikhoan(mataikhoan);
             taikhoan_using.setTentaikhoan(tentaikhoan);
             taikhoan_using.setMatkhau(matkhau);

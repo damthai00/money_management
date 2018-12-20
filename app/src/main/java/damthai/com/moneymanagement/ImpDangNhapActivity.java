@@ -93,8 +93,8 @@ public class ImpDangNhapActivity extends AppCompatActivity implements ViewImpDan
         bundle.putInt("mataikhoan",taiKhoan.getMataikhoan());
         bundle.putString("tentaikhoan",taiKhoan.getTentaikhoan());
         bundle.putString("matkhau",taiKhoan.getMatkhau());
-        bundle.putInt("taikhoanthe",taiKhoan.getTaikhoanthe());
-        bundle.putInt("tienmat",taiKhoan.getTienmat());
+        bundle.putLong("taikhoanthe",taiKhoan.getTaikhoanthe());
+        bundle.putLong("tienmat",taiKhoan.getTienmat());
         intent.putExtra("gettaikhoan",bundle);
         startActivity(intent);
         Toast.makeText(ImpDangNhapActivity.this, "Đăng Nhập Thành Công !" , Toast.LENGTH_SHORT).show();

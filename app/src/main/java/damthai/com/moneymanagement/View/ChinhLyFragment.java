@@ -1,6 +1,7 @@
 package damthai.com.moneymanagement.View;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,6 +40,7 @@ public class ChinhLyFragment extends Fragment {
     Button bnt_chinhly_thaydoi_tkt;
     Button bnt_chinhly_thaydoi_tm;
     ListView lv_chinhly_dsnhom;
+    Button bnt_chinhly_dangxuat;
 
 
     @Nullable
@@ -53,6 +55,7 @@ public class ChinhLyFragment extends Fragment {
         bnt_chinhly_thaydoi_tkt = (Button) view.findViewById(R.id.bnt_chinhly_thaydoi_tkt);
         bnt_chinhly_thaydoi_tm = (Button) view.findViewById(R.id.bnt_chinhly_thaydoi_tm);
         lv_chinhly_dsnhom = (ListView) view.findViewById(R.id.lv_chinhly_danhsachnhom);
+        bnt_chinhly_dangxuat = (Button) view.findViewById(R.id.bnt_chinhly_dangxuat);
 
         bnt_chinhly_thaydoi_tkt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,6 +210,13 @@ public class ChinhLyFragment extends Fragment {
             }
         });
 
+        bnt_chinhly_dangxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.getInstance(), ImpDangNhapActivity.class);
+                startActivity(intent);
+            }
+        });
 
         LoadDuLieu();
         return view;
@@ -221,8 +231,8 @@ public class ChinhLyFragment extends Fragment {
             int mataikhoan = bundle.getInt("mataikhoan");
             String tentaikhoan = bundle.getString("tentaikhoan");
             String matkhau = bundle.getString("matkhau");
-            int taikhoanthe = bundle.getInt("taikhoanthe");
-            int tienmat = bundle.getInt("tienmat");
+            long taikhoanthe = bundle.getLong("taikhoanthe");
+            long tienmat = bundle.getLong("tienmat");
             taikhoan_using.setMataikhoan(mataikhoan);
             taikhoan_using.setTentaikhoan(tentaikhoan);
             taikhoan_using.setMatkhau(matkhau);
@@ -235,13 +245,13 @@ public class ChinhLyFragment extends Fragment {
         ViewChinhLy viewChinhLy = new ViewChinhLy();
         PresenterLogicChinhLy presenterLogicChinhLy = new PresenterLogicChinhLy(viewChinhLy);
         taikhoan_using =  presenterLogicChinhLy.LoadDuLieu_TaiKhoan(taikhoan_using);
-        String taikhoanthe = Integer.toString(taikhoan_using.getTaikhoanthe());
-        String tienmat = Integer.toString(taikhoan_using.getTienmat());
+        String taikhoanthe = Long.toString(taikhoan_using.getTaikhoanthe());
+        String tienmat = Long.toString(taikhoan_using.getTienmat());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 
-        edt_chinhly_taikhoanthe.setText(decimalFormat.format(Integer.parseInt(taikhoanthe)));
-        edt_chinhly_tienmat.setText(decimalFormat.format(Integer.parseInt(tienmat)));
-        int tongtien = taikhoan_using.getTaikhoanthe() + taikhoan_using.getTienmat();
+        edt_chinhly_taikhoanthe.setText(decimalFormat.format(Long.parseLong(taikhoanthe)));
+        edt_chinhly_tienmat.setText(decimalFormat.format(Long.parseLong(tienmat)));
+        long tongtien = taikhoan_using.getTaikhoanthe() + taikhoan_using.getTienmat();
         edt_chinhly_tong.setText(decimalFormat.format(tongtien));
         lv_chinhly_dsnhom = presenterLogicChinhLy.loadDuLiau_ListNhom(lv_chinhly_dsnhom,taikhoan_using);
     }
