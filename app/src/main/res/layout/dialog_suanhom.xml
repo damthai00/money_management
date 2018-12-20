@@ -115,6 +115,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
+            android:id="@+id/bnt_dialog_suanhom_huy"
+            android:text="Hủy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+        <Button
             android:id="@+id/bnt_dialog_suanhom_xoanhom"
             android:text="Xóa nhóm"
             android:layout_width="wrap_content"

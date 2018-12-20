@@ -186,6 +186,12 @@ public class  DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteNhom(Nhom nhom)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NHOM,"manhom = " +nhom.getManhom(),null );
+        db.close();
+    }
 
     //Xử lý Giao dịch -----------------------------------------------------------------------------------------------------------
 

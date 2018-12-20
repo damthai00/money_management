@@ -136,11 +136,12 @@ public class ChinhLyFragment extends Fragment {
                 dialog.setCancelable(false);
                 dialog.setContentView(R.layout.dialog_suanhom);
                 dialog.show();
-                Button bnt_dialog_suanhom_suanhom = (Button) dialog.findViewById(R.id.bnt_dialog_suanhom_suanhom);
+                final Button bnt_dialog_suanhom_suanhom = (Button) dialog.findViewById(R.id.bnt_dialog_suanhom_suanhom);
                 Button bnt_dialog_suanhom_xoanhom = (Button) dialog.findViewById(R.id.bnt_dialog_suanhom_xoanhom);
                 Button bnt_dialog_suanhom_xacnhan = (Button) dialog.findViewById(R.id.bnt_dialog_suanhom_xacnhan);
                 EditText edt_dialog_suanhom_tennhom = (EditText) dialog.findViewById(R.id.edt_dialog_suanhom_tennhom);
                 EditText edt_dialog_suanhom_loai = (EditText) dialog.findViewById(R.id.edt_dialog_suanhom_loai);
+                final Button bnt_dialog_suanhom_huy = (Button) dialog.findViewById(R.id.bnt_dialog_suanhom_huy);
                 final LinearLayout linearLayout_dialig_suanhom_nhomsua = (LinearLayout) dialog.findViewById(R.id.linearLayout_dialig_suanhom_nhomsua) ;
                 final EditText edt_dialog_suanhom_tennhommoi = (EditText) dialog.findViewById(R.id.edt_dialog_suanhom_tennhommoi);
                 final RadioButton rbnt_dialog_suanhom_chitieu = (RadioButton) dialog.findViewById(R.id.rbnt_dialog_suanhom_chitieu);
@@ -175,10 +176,27 @@ public class ChinhLyFragment extends Fragment {
                         }
                     }
                 });
+                bnt_dialog_suanhom_xoanhom.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenterLogicChinhLy.xoaNhom(nhom);
+                        if(viewChinhLy.getTrangThai()==true)
+                            dialog.cancel();
+                        LoadDuLieu();
+                    }
+                });
+                bnt_dialog_suanhom_huy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
                 bnt_dialog_suanhom_suanhom.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         linearLayout_dialig_suanhom_nhomsua.setVisibility(View.VISIBLE);
+                        bnt_dialog_suanhom_huy.setVisibility(View.VISIBLE);
+                        bnt_dialog_suanhom_suanhom.setVisibility(View.GONE);
                         edt_dialog_suanhom_tennhommoi.setText(nhom.getTennhom());
                         if(nhom.getLoai() == 1)
                             rbnt_dialog_suanhom_thunhap.setChecked(true);

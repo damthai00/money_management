@@ -4,14 +4,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.zip.GZIPInputStream;
 
 import damthai.com.moneymanagement.MainActivity;
 import damthai.com.moneymanagement.Model.DBManager;
+import damthai.com.moneymanagement.Model.GiaoDich;
 import damthai.com.moneymanagement.Model.Nhom;
 import damthai.com.moneymanagement.Model.NhomAdapter;
 import damthai.com.moneymanagement.Model.TaiKhoan;
 import damthai.com.moneymanagement.R;
 import damthai.com.moneymanagement.View.ViewChinhLy;
+import damthai.com.moneymanagement.View.ViewGiaoDich;
 import damthai.com.moneymanagement.View.ViewImpChinhLy;
 
 public class PresenterLogicChinhLy implements PresenterImpChinhLy {
@@ -47,19 +50,63 @@ public class PresenterLogicChinhLy implements PresenterImpChinhLy {
         DBManager dbManager = new DBManager(MainActivity.getInstance());
         ArrayList<Nhom> listNhom = dbManager.getNhom(taiKhoan.getMataikhoan());
         int dem = 0;
+        ArrayList<GiaoDich> listGiaoDich = dbManager.getGiaoDich(taiKhoan.getMataikhoan());
+        for (int i=0;i<listGiaoDich.size();i++){
+            if(listGiaoDich.get(i).getNhom()==nhom.getManhom()) {
+                for (int j=0;j<listNhom.size();j++) {
+                    if(listNhom.get(i).getManhom()==nhom.getManhom()) {
+                        if(listNhom.get(i).getLoai() != nhom.getLoai()) {
+                            viewImpChinhLy.KhongTheThayDoiLoai();
+                            dem = 1;
+                            break;
+                        }
+                        break;
+                    }
+                }
+                break;
+            }
+        }
 
         for (int i=0;i<listNhom.size();i++)
         {
-            if(nhom.getTennhom().equals(listNhom.get(i).getTennhom())) {
+            if(nhom.getTennhom().equals(listNhom.get(i).getTennhom()) && listNhom.get(i).getManhom() != nhom.getManhom()) {
                 viewImpChinhLy.TenNhomDaTonTai(nhom);
                 dem = 1;
                 break;
             }
         }
+        for (int i=0;i<listNhom.size();i++){
+            if(nhom.getManhom()==listNhom.get(i).getManhom()){
+                if (nhom.getTennhom().equals(listNhom.get(i).getTennhom()) && nhom.getLoai() == listNhom.get(i).getLoai()) {
+                    viewImpChinhLy.None();
+                    dem = 1;
+                    break;
+                }
+            }
+        }
+
         if (dem == 0)
         {
             dbManager.updateNhom(nhom);
             viewImpChinhLy.SuaNhomThanhCong();
+        }
+    }
+
+    public void xoaNhom(Nhom nhom)
+    {
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<GiaoDich> listGiaoDich = dbManager.getGiaoDich(nhom.getMataikhoan());
+        int dem = 0;
+        for(int i=0;i<listGiaoDich.size();i++) {
+            if (listGiaoDich.get(i).getNhom() == nhom.getManhom()) {
+                viewImpChinhLy.NhomDangDuocSuDung();
+                dem = 1;
+                break;
+            }
+        }
+        if(dem ==0) {
+            dbManager.deleteNhom(nhom);
+            viewImpChinhLy.XoaNhomThanhCong();
         }
     }
 
