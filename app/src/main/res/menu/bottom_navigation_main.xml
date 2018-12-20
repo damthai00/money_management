@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/giaodich"
+        android:icon="@drawable/ic_giaodich"
+        android:title="Giao Dịch"/>
+
+
+
+
+    <item android:id="@+id/them"
+        android:icon="@drawable/ic_them"
+        android:title="Thêm" />
+
+
+    <item android:id="@+id/chuyendoi"
+        android:icon="@drawable/ic_chuyendoi"
+        android:title="Chuyển Đổi"/>
+
+
+    <item android:id="@+id/chinhly"
+        android:icon="@drawable/ic_chinhly"
+        android:title="Chỉnh Lý"
+        />
+
+
+</menu>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:text="Tên nhóm: "
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:text="ff00"
+            android:textSize="20dp"
+            android:enabled="false"
+            android:id="@+id/edt_dialog_suanhom_tennhom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:gravity="center">
+
+       <TextView
+           android:text="Loại "
+           android:layout_width="100dp"
+           android:layout_height="wrap_content" />
+       <EditText
+           android:textSize="15dp"
+           android:enabled="false"
+           android:id="@+id/edt_dialog_suanhom_loai"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+   </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_dialig_suanhom_nhomsua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="Tên nhóm mới: "
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:textColor="@color/color_ten_nhom"
+                android:text="ff00"
+                android:textSize="20dp"
+                android:id="@+id/edt_dialog_suanhom_tennhommoi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:text="Loại mới"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/rbnt_dialog_suanhom_thunhap"
+                    android:text="Thu nhập"
+                    android:textColor="@color/color_thu_nhap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rbnt_dialog_suanhom_chitieu"
+                    android:text="Chi tiêu"
+                    android:textColor="@color/color_chi_tieu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:id="@+id/bnt_dialog_suanhom_suanhom"
+            android:text="Sửa nhóm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bnt_dialog_suanhom_xoanhom"
+            android:text="Xóa nhóm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bnt_dialog_suanhom_xacnhan"
+            android:text="Xác nhận"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

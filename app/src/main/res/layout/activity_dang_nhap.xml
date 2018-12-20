@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ImpDangNhapActivity">
+
+
+    <Button
+        android:id="@+id/bnt_dangnhap"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/set_shape_buttom"
+        android:text="ĐĂNG NHẬP"
+        android:typeface="monospace"
+        android:textColor="@color/color_text_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_pass" />
+
+    <Button
+        android:id="@+id/bnt_dangki"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:text="ĐĂNG KÍ"
+        android:background="@color/color_background_bnt_dang_ki"
+        android:textColor="@color/color_text_bnt_dang_ki"
+        android:typeface="monospace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bnt_dangnhap" />
+
+    <EditText
+        android:id="@+id/edit_user"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="232dp"
+        android:contentDescription="User"
+        android:drawableLeft="@drawable/ic_account_login"
+        android:drawableTint="@color/color_thu_nhap"
+        android:ems="10"
+        android:hint="User"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_pass"
+        android:layout_width="280dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="48dp"
+        android:contentDescription="Password"
+        android:drawableLeft="@drawable/ic_key"
+        android:drawableTint="@color/color_thu_nhap"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_user" />
+
+</android.support.constraint.ConstraintLayout>

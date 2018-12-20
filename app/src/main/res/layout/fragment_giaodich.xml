@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SỐ DƯ"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TK Thẻ"
+                android:textSize="15dp"
+                android:layout_marginLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/edt_giaodich_taikhoanthe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1000000000"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="35dp"
+                android:enabled="false"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiền mặt: "
+                android:textSize="15dp"
+                android:layout_marginLeft="30dp"/>
+
+            <EditText
+                android:id="@+id/edt_giaodich_tienmat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1000000000"
+                android:gravity="right"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="20dp"
+                android:enabled="false"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DS giao dịch"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lọc"
+            android:textSize="20dp"
+            android:layout_marginLeft="50dp"/>
+        <Spinner
+            android:id="@+id/spiner_giaodich_loc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="right">
+        </Spinner>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/lv_giaodich_dsgiaodich"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+
+
+
+</LinearLayout>

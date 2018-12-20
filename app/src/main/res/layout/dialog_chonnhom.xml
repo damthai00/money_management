@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtDSnhom"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="Danh sách nhóm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/lv_chonnhom_dsnhom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/taonhom_viewbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/bnt_chonnhom_huy"
+            android:textSize="16dp"
+            android:text="Huy"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/bnt_chonnhom_taonhommoi"
+            android:textSize="16dp"
+            android:text="Tạo nhóm mới"
+            android:layout_width="210dp"
+            android:layout_height="80dp"
+           android:gravity="center" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
