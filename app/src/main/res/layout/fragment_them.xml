@@ -82,7 +82,8 @@
             android:gravity="left"
             android:text=""
             android:lines="2"
-            android:maxLines="2"/>
+            android:maxLines="2"
+            android:maxLength="100"/>
     </LinearLayout>
 
     <LinearLayout

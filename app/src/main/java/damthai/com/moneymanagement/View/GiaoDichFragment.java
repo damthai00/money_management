@@ -5,13 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -72,7 +75,7 @@ public class GiaoDichFragment extends Fragment {
         final PresenterLogicGiaoDich presenterLogicGiaoDich = new PresenterLogicGiaoDich();
         taikhoan_using = presenterLogicGiaoDich.LoadDuLieu_TaiKhoan(taikhoan_using);
         final long taikhoanthe = taikhoan_using.getTaikhoanthe();
-        long tienmat = taikhoan_using.getTienmat();
+        final long tienmat = taikhoan_using.getTienmat();
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         edt_giaodich_taikhoanthe.setText(decimalFormat.format(taikhoanthe));
         edt_giaodich_tienmat.setText(decimalFormat.format(tienmat));
@@ -141,6 +144,69 @@ public class GiaoDichFragment extends Fragment {
                 dialog.setCancelable(false);
                 dialog.setContentView(R.layout.dialog_suagiaodich);
                 dialog.show();
+
+                final Button bnt_dialog_suagiaodich_sua = (Button) dialog.findViewById(R.id.bnt_dialog_suagiaodich_sua);
+                Button bnt_dialog_suagiaodich_xoa = (Button) dialog.findViewById(R.id.bnt_dialog_suagiaodich_xoa);
+                Button bnt_dialog_suagiaodich_xacnhan = (Button) dialog.findViewById(R.id.bnt_dialog_suagiaodich_xacnhan);
+                final Button bnt_dialog_suagiaodich_huy = (Button) dialog.findViewById(R.id.bnt_dialog_suagiaodich_huy);
+                final Button bnt_dialog_suagiaodich_chonnhom = (Button) dialog.findViewById(R.id.bnt_dialog_suagiaodich_chonnhom);
+                final Button bnt_dialog_suagiaodich_chongnay = (Button) dialog.findViewById(R.id.bnt_dialog_suagiaodich_chongnay);
+                final RadioButton rbnt_dialog_suagiaodich_tienmat = (RadioButton) dialog.findViewById(R.id.rbnt_dialog_suagiaodich_tienmat);
+                final RadioButton rbnt_dialog_suagiaodich_taikhoanthe = (RadioButton) dialog.findViewById(R.id.rbnt_dialog_suagiaodich_taikhoanthe);
+                final EditText edt_dialog_suagiaodich_sotien = (EditText) dialog.findViewById(R.id.edt_dialog_suagiaodich_sotien);
+                EditText edt_dialog_suagiaodich_nhom = (EditText) dialog.findViewById(R.id.edt_dialog_suagiaodich_nhom);
+                EditText edt_dialog_suagiaodich_ngay = (EditText) dialog.findViewById(R.id.edt_dialog_suagiaodich_ngay);
+                final EditText edt_dialog_suagiaodich_ghichu = (EditText) dialog.findViewById(R.id.edt_dialog_suagiaodich_ghichu);
+
+
+
+                DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                edt_dialog_suagiaodich_sotien.setText(decimalFormat.format(giaoDich.getSotien()));
+                edt_dialog_suagiaodich_nhom.setText(nhom.getTennhom());
+                edt_dialog_suagiaodich_ghichu.setText(giaoDich.getGhichu());
+                edt_dialog_suagiaodich_ngay.setText(giaoDich.getNgaygiaodich());
+                if(giaoDich.getHinhthucphi().equals("tienmat")) {
+                    rbnt_dialog_suagiaodich_tienmat.setChecked(true);
+                }
+                if (giaoDich.getHinhthucphi().equals("taikhoanthe")) {
+                    rbnt_dialog_suagiaodich_taikhoanthe.setChecked(true);
+                }
+                if (nhom.getLoai()==1) {
+                    edt_dialog_suagiaodich_nhom.setTextColor(ContextCompat.getColor(MainActivity.getInstance(), R.color.color_thu_nhap));
+                }
+
+                if (nhom.getLoai()==2) {
+                    edt_dialog_suagiaodich_nhom.setTextColor(ContextCompat.getColor(MainActivity.getInstance(), R.color.color_chi_tieu));
+                }
+                bnt_dialog_suagiaodich_xacnhan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+
+                bnt_dialog_suagiaodich_sua.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        edt_dialog_suagiaodich_sotien.setEnabled(true);
+                        edt_dialog_suagiaodich_ghichu.setEnabled(true);
+                        bnt_dialog_suagiaodich_chonnhom.setEnabled(true);
+                        bnt_dialog_suagiaodich_chongnay.setEnabled(true);
+                        rbnt_dialog_suagiaodich_tienmat.setEnabled(true);
+                        rbnt_dialog_suagiaodich_taikhoanthe.setEnabled(true);
+                        edt_dialog_suagiaodich_sotien.setText(edt_dialog_suagiaodich_sotien.getText());
+                        edt_dialog_suagiaodich_sotien.setTextColor(ContextCompat.getColor(MainActivity.getInstance(), R.color.color_den));
+
+                        bnt_dialog_suagiaodich_huy.setVisibility(View.VISIBLE);
+                        bnt_dialog_suagiaodich_sua.setVisibility(View.GONE);
+                    }
+                });
+                bnt_dialog_suagiaodich_huy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
             }
         });
     }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import damthai.com.moneymanagement.MainActivity;
 import damthai.com.moneymanagement.Model.DBManager;
 import damthai.com.moneymanagement.Model.GiaoDich;
 import damthai.com.moneymanagement.Model.Nhom;
@@ -121,6 +123,10 @@ public class ThemFragment extends Fragment {
                         final ViewChinhLy viewChinhLy = new ViewChinhLy();
                         final PresenterLogicChinhLy presenterLogicChinhLy = new PresenterLogicChinhLy(viewChinhLy);
                         nhom_dc_chom = presenterLogicChinhLy.getNhom(position,taikhoan_using);
+                        if (nhom_dc_chom.getLoai()==1)
+                            edt_them_nhom.setTextColor(ContextCompat.getColor(MainActivity.getInstance(), R.color.color_thu_nhap));
+                        if (nhom_dc_chom.getLoai()==2)
+                            edt_them_nhom.setTextColor(ContextCompat.getColor(MainActivity.getInstance(), R.color.color_chi_tieu));
                         edt_them_nhom.setText(nhom_dc_chom.getTennhom());
                         dialog.cancel();
                     }

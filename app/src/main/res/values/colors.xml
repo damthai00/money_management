@@ -9,6 +9,7 @@
     <color name="background_nav">#e8ecec</color>
     <color name="color_item">#0f6459</color>
     <color name="color_text_login">#ffffff</color>
+    <color name="color_den">#000000</color>
 
     <color name="background">#ffffff</color>
     <color name="color_background_bnt_dang_ki">#f2f2f2</color>
