@@ -27,6 +27,9 @@ public class GiaoDich {
         this.hinhthucphi = hinhthucphi;
         this.mataikhoan = mataikhoan;
     }
+    public GiaoDich(){
+
+    }
 
     public int getMagiaodich() {
         return magiaodich;
