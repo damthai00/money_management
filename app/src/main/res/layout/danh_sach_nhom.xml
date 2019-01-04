@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txt_dsnhom_tennhom"
-        android:textSize="15dp"
-        android:text="Tên nhóm"
-        android:layout_width="match_parent"
+
+    <LinearLayout
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_dark"/>
-    <TextView
-        android:id="@+id/txt_dsnhom_loai"
-        android:textSize="13dp"
-        android:text="loại"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txt_dsnhom_tennhom"
+            android:textSize="15dp"
+            android:text="Tên nhóm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_red_dark"/>
+        <TextView
+            android:id="@+id/txt_dsnhom_loai"
+            android:textSize="13dp"
+            android:text="loại"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/holo_blue_dark"/>
+    </LinearLayout>
+   <ImageView
+       android:id="@+id/img_checknhom_dangsudung"
+       android:layout_width="20dp"
+       android:layout_height="20dp" />
 
 </LinearLayout>

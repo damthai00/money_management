@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import damthai.com.moneymanagement.MainActivity;
 import damthai.com.moneymanagement.R;
 
 public class NhomAdapter extends BaseAdapter {
@@ -59,6 +61,12 @@ public class NhomAdapter extends BaseAdapter {
             txt_loai.setTextColor(ContextCompat.getColor(context,R.color.color_chi_tieu));
         }
 
+        ImageView image_checked = (ImageView) convertView.findViewById(R.id.img_checknhom_dangsudung);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<GiaoDich> listGiaoDich = dbManager.getGiaoDich(dsnhom.get(position).getMataikhoan());
+        for(int i = 0;i<listGiaoDich.size();i++)
+            if(dsnhom.get(position).getManhom() == listGiaoDich.get(i).getNhom())
+                image_checked.setImageResource(R.drawable.ic_check_nhom_sudung);
         return convertView;
     }
 }

@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
@@ -27,6 +28,7 @@ import damthai.com.moneymanagement.MainActivity;
 import damthai.com.moneymanagement.Model.Nhom;
 import damthai.com.moneymanagement.Model.TaiKhoan;
 import damthai.com.moneymanagement.Presenter.PresenterLogicChinhLy;
+import damthai.com.moneymanagement.Presenter.PresenterLogicTaoNhom;
 import damthai.com.moneymanagement.Presenter.PresenterLogicThayDoiSoDu;
 import damthai.com.moneymanagement.R;
 
@@ -40,7 +42,7 @@ public class ChinhLyFragment extends Fragment {
     Button bnt_chinhly_thaydoi_tkt;
     Button bnt_chinhly_thaydoi_tm;
     ListView lv_chinhly_dsnhom;
-    Button bnt_chinhly_dangxuat;
+    Button bnt_chinhly_dangxuat, bnt_chinhly_taonhom;
 
 
     @Nullable
@@ -56,6 +58,7 @@ public class ChinhLyFragment extends Fragment {
         bnt_chinhly_thaydoi_tm = (Button) view.findViewById(R.id.bnt_chinhly_thaydoi_tm);
         lv_chinhly_dsnhom = (ListView) view.findViewById(R.id.lv_chinhly_danhsachnhom);
         bnt_chinhly_dangxuat = (Button) view.findViewById(R.id.bnt_chinhly_dangxuat);
+        bnt_chinhly_taonhom = (Button) view.findViewById(R.id.bnt_chinhly_taonhom);
 
         bnt_chinhly_thaydoi_tkt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +109,7 @@ public class ChinhLyFragment extends Fragment {
                 final Button bnt_chinhly_dialog_tienmat_xacnhan = (Button) dialog.findViewById(R.id.bnt_chinhly_dialog_tienmat_xacnhan);
                 final Button bnt_chinhly_dialog_tienmat_huy = (Button) dialog.findViewById(R.id.bnt_chinhly_dialog_tienmat_huy);
 
-                edt_chinhly_dialog_hientai_tienmat.setText(edt_chinhly_taikhoanthe.getText());
+                edt_chinhly_dialog_hientai_tienmat.setText(edt_chinhly_tienmat.getText());
                 bnt_chinhly_dialog_tienmat_xacnhan.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -149,6 +152,7 @@ public class ChinhLyFragment extends Fragment {
                 final EditText edt_dialog_suanhom_tennhommoi = (EditText) dialog.findViewById(R.id.edt_dialog_suanhom_tennhommoi);
                 final RadioButton rbnt_dialog_suanhom_chitieu = (RadioButton) dialog.findViewById(R.id.rbnt_dialog_suanhom_chitieu);
                 final RadioButton rbnt_dialog_suanhom_thunhap = (RadioButton) dialog.findViewById(R.id.rbnt_dialog_suanhom_thunhap);
+                final TextView txt_dialog_suanhom_thongbao = (TextView) dialog.findViewById(R.id.txt_dialog_suanhom_thongbao) ;
 
                 edt_dialog_suanhom_tennhom.setText(nhom.getTennhom());
                 edt_dialog_suanhom_tennhom.setTextColor(ContextCompat.getColor(MainActivity.getInstance(), R.color.color_ten_nhom));
@@ -205,6 +209,11 @@ public class ChinhLyFragment extends Fragment {
                             rbnt_dialog_suanhom_thunhap.setChecked(true);
                         if (nhom.getLoai() == 2)
                             rbnt_dialog_suanhom_chitieu.setChecked(true);
+                        if(presenterLogicChinhLy.KiemTraNhomSuDung(taikhoan_using,nhom)) {
+                            rbnt_dialog_suanhom_chitieu.setEnabled(false);
+                            rbnt_dialog_suanhom_thunhap.setEnabled(false);
+                            txt_dialog_suanhom_thongbao.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
             }
@@ -215,6 +224,46 @@ public class ChinhLyFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.getInstance(), ImpDangNhapActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        bnt_chinhly_taonhom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ViewChinhLy viewChinhLy = new ViewChinhLy();
+                final PresenterLogicChinhLy presenterLogicChinhLy = new PresenterLogicChinhLy(viewChinhLy);
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setTitle("Tạo nhóm mới");
+                dialog.setCancelable(false);
+                dialog.setContentView(R.layout.dialog_taonhom);
+                dialog.show();
+
+                final Button bnt_taonhom_xacnhan = (Button) dialog.findViewById(R.id.bnt_taonhom_xacnhan);
+                bnt_taonhom_xacnhan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EditText edt_taonhom_tennhom = (EditText) dialog.findViewById(R.id.edt_taonhom_tennhom);
+                        RadioButton rbnt_taonhom_thunhap = (RadioButton) dialog.findViewById(R.id.rbnt_taonhom_thunhap);
+                        RadioButton rbnt_taonhom_chitieu = (RadioButton) dialog.findViewById(R.id.rbnt_taonhom_chitieu);
+
+                        ViewTaoNhom viewTaoNhom = new ViewTaoNhom();
+                        PresenterLogicTaoNhom presenterLogicTaoNhom = new PresenterLogicTaoNhom(viewTaoNhom);
+                        presenterLogicTaoNhom.XuLyTaoNhom(edt_taonhom_tennhom,rbnt_taonhom_thunhap,rbnt_taonhom_chitieu,taikhoan_using);
+                        if (viewTaoNhom.getTrangThai() == true) {
+                            dialog.cancel();
+                            LoadDuLieu();
+                        }
+
+                    }
+                });
+
+                final Button bnt_taonhom_huy = (Button) dialog.findViewById(R.id.bnt_taonhom_huy);
+                bnt_taonhom_huy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
             }
         });
 

@@ -7,8 +7,7 @@ import damthai.com.moneymanagement.MainActivity;
 
 public class ViewTaoNhom implements ViewImpTaoNhom {
 
-    private boolean TrangThai;
-
+    private boolean TrangThai = false;
     public boolean getTrangThai() {
         return TrangThai;
     }

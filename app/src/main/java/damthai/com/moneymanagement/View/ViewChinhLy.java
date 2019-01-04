@@ -34,13 +34,13 @@ public class ViewChinhLy implements ViewImpChinhLy
     @Override
     public void NhomDangDuocSuDung() {
         Toast.makeText(MainActivity.getInstance(),"Nhóm đang được sử dụng! Không thể xóa! Hãy xem lại!",Toast.LENGTH_SHORT).show();
-        TrangThai = false;
+        this.TrangThai = false;
     }
 
     @Override
     public void XoaNhomThanhCong() {
         Toast.makeText(MainActivity.getInstance(),"Xóa nhóm thành công!",Toast.LENGTH_SHORT).show();
-        TrangThai = true;
+        this.TrangThai = true;
     }
 
     @Override

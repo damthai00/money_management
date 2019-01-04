@@ -1,12 +1,8 @@
 package damthai.com.moneymanagement.Presenter;
 
-import android.icu.text.UnicodeSetSpanner;
-import android.net.ParseException;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.security.PublicKey;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,7 +29,6 @@ public class PresenterLogicGiaoDich implements PresenterImpGiaoDich {
 
     public PresenterLogicGiaoDich()
     {
-
     }
     public ListView loadDuLiau_DSGiaoDich(ListView listDSGiaoDich,int ma_tai_khoan ){
         final DBManager dbManager = new DBManager(MainActivity.getInstance());
@@ -193,6 +188,18 @@ public class PresenterLogicGiaoDich implements PresenterImpGiaoDich {
         return month;
     }
 
+    public int LayNgayTrongChuoi(String dateString)
+    {
+        Date date = new Date();
+        ParsePosition parsePosition = new ParsePosition(0);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        date = simpleDateFormat.parse(dateString,parsePosition);
+        calendar.setTime(date);
+        int ngay = calendar.get(calendar.DAY_OF_MONTH);
+        return ngay;
+    }
+
     public int LayNamTrongChuoi(String dateString)
     {
         Date date = new Date();
@@ -284,5 +291,141 @@ public class PresenterLogicGiaoDich implements PresenterImpGiaoDich {
             if(list.get(i).getManhom() == giaoDich.getNhom())
                 return list.get(i);
         return null;
+    }
+    @Override
+    public void SuaDoiGiaoDich(GiaoDich giaoDichMoi)
+    {
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<GiaoDich> listGiaoDich = dbManager.getGiaoDich(giaoDichMoi.getMataikhoan());
+        ArrayList<TaiKhoan> listTaiKhoan = dbManager.getTaiKhoan();
+        ArrayList<Nhom> listNhom = dbManager.getNhom(giaoDichMoi.getMataikhoan());
+        TaiKhoan taiKhoan = new TaiKhoan();
+        Nhom nhomcu = new Nhom();
+        Nhom nhommoi = new Nhom();
+        long tkt = 0;
+        long tm = 0;
+        GiaoDich giaoDichCu = new GiaoDich();
+        for(int i = 0;i<listGiaoDich.size();i++) {
+            if (giaoDichMoi.getMagiaodich() == listGiaoDich.get(i).getMagiaodich()) {
+                giaoDichCu = listGiaoDich.get(i);
+                if (giaoDichMoi.getNhom() == listGiaoDich.get(i).getNhom() &&
+                        giaoDichMoi.getNgaygiaodich().equals(listGiaoDich.get(i).getNgaygiaodich())&&
+                        giaoDichMoi.getHinhthucphi().equals(listGiaoDich.get(i).getHinhthucphi()) &&
+                        giaoDichMoi.getSotien() == listGiaoDich.get(i).getSotien() &&
+                        giaoDichMoi.getGhichu().equals(listGiaoDich.get(i).getGhichu()))
+                    viewImpGiaoDich.None();
+
+                else {
+                    if (giaoDichMoi.getSotien()==0)
+                        viewImpGiaoDich.ChuaNhapSoTien();
+                    else {
+                        for (int j = 0; j < listTaiKhoan.size(); j++)
+                            if (listTaiKhoan.get(j).getMataikhoan() == giaoDichMoi.getMataikhoan()) {
+                                taiKhoan = listTaiKhoan.get(j);
+                                tkt = taiKhoan.getTaikhoanthe();
+                                tm = taiKhoan.getTienmat();
+                                break;
+                            }
+                        for(int j = 0;j<listNhom.size();j++)
+                            if(giaoDichCu.getNhom()==listNhom.get(j).getManhom()){
+                                nhomcu = listNhom.get(j);
+                                break;
+                            }
+
+                        for(int j = 0;j<listNhom.size();j++)
+                            if(giaoDichMoi.getNhom() == listNhom.get(j).getManhom()){
+                            nhommoi = listNhom.get(j);
+                            }
+
+                        // khôi phục giao dịch cũ
+                        if(nhomcu.getLoai()==1 && giaoDichCu.getHinhthucphi().equals("taikhoanthe"))
+                             tkt = taiKhoan.getTaikhoanthe() - listGiaoDich.get(i).getSotien();
+                        else {
+                            if (nhomcu.getLoai() == 1 && giaoDichCu.getHinhthucphi().equals("tienmat"))
+                                tm = taiKhoan.getTienmat() - listGiaoDich.get(i).getSotien();
+                            else{
+                                if (nhomcu.getLoai()==2 && giaoDichCu.getHinhthucphi().equals("taikhoanthe"))
+                                    tkt = taiKhoan.getTaikhoanthe()+ listGiaoDich.get(i).getSotien();
+                                else{
+                                    if (nhomcu.getLoai() == 2 && giaoDichCu.getHinhthucphi().equals("tienmat"))
+                                        tm = taiKhoan.getTienmat() + listGiaoDich.get(i).getSotien();
+                                }
+                            }
+                        }
+                        // update giao dịch mới
+                        if(nhommoi.getLoai()==1 && giaoDichMoi.getHinhthucphi().equals("taikhoanthe"))  //thu nhap vao tai khoan the
+                            tkt = tkt + giaoDichMoi.getSotien();
+                        else {
+                            if (nhommoi.getLoai()==1 && giaoDichMoi.getHinhthucphi().equals("tienmat")) //thu nhập vào tiền mặt
+                                tm = tm + giaoDichMoi.getSotien();
+                            else{
+                                if (nhommoi.getLoai()==2 && giaoDichMoi.getHinhthucphi().equals("taikhoanthe")) //chi tiêu bằng tai khoan thẻ
+                                    tkt = tkt - giaoDichMoi.getSotien();
+                                else{
+                                    if (nhommoi.getLoai()==2 && giaoDichMoi.getHinhthucphi().equals("tienmat"))     //chi tiêu bằng tiền mặt
+                                        tm = tm - giaoDichMoi.getSotien();
+                                }
+                            }
+                        }
+                        taiKhoan.setTienmat(tm);
+                        taiKhoan.setTaikhoanthe(tkt);
+                        dbManager.updateTaikhoan(taiKhoan);
+                        dbManager.updateGiaoDich(giaoDichMoi);
+                        viewImpGiaoDich.SuaGiaoDichThanhCong();
+                    }
+                }
+                break;
+            }
+        }
+
+    }
+
+    @Override
+    public void XoaGiaoDich(GiaoDich giaoDich) {
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+
+       Nhom nhom_su_dung = new Nhom();
+       TaiKhoan taiKhoan_su_dung  =new TaiKhoan();
+       long tkt =0;
+       long tm = 0;
+       ArrayList<Nhom> listNhom = dbManager.getNhom(giaoDich.getMataikhoan());
+       ArrayList<TaiKhoan> listTaiKhoan = dbManager.getTaiKhoan();
+       for(int i = 0;i<listNhom.size();i++){
+           if(giaoDich.getNhom() == listNhom.get(i).getManhom()) {
+               nhom_su_dung = listNhom.get(i);
+               break;
+           }
+       }
+       for(int i = 0;i<listTaiKhoan.size();i++) {
+           if (giaoDich.getMataikhoan() == listTaiKhoan.get(i).getMataikhoan()) {
+               taiKhoan_su_dung = listTaiKhoan.get(i);
+               tkt = taiKhoan_su_dung.getTaikhoanthe();
+               tm = taiKhoan_su_dung.getTienmat();
+               break;
+           }
+       }
+
+       if(nhom_su_dung.getLoai()==1 && giaoDich.getHinhthucphi().equals("taikhoanthe"))  //thu nhập vào tài khoản thẻ
+                tkt = tkt - giaoDich.getSotien();
+       else{
+           if (nhom_su_dung.getLoai()==1 && giaoDich.getHinhthucphi().equals("tienmat"))   //thu nhập vào tiền mặt
+                    tm = tm - giaoDich.getSotien();
+           else{
+               if (nhom_su_dung.getLoai()==2 && giaoDich.getHinhthucphi().equals("taikhoanthe"))  //chi tiêu bằng tài khoản thẻ
+                        tkt = tkt + giaoDich.getSotien();
+               else {
+                   if (nhom_su_dung.getLoai()==2 && giaoDich.getHinhthucphi().equals("tienmat"))       //chi tiêu bằng tiền mặt
+                            tm = tm + giaoDich.getSotien();
+                   }
+                }
+            }
+
+
+        taiKhoan_su_dung.setTienmat(tm);
+        taiKhoan_su_dung.setTaikhoanthe(tkt);
+        dbManager.updateTaikhoan(taiKhoan_su_dung);
+        dbManager.deleteGiaoDich(giaoDich);
+        viewImpGiaoDich.XoaThanhCong();
+
     }
 }

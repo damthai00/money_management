@@ -101,9 +101,11 @@ public class ThemFragment extends Fragment {
                                 ViewTaoNhom viewTaoNhom = new ViewTaoNhom();
                                 PresenterLogicTaoNhom presenterLogicTaoNhom = new PresenterLogicTaoNhom(viewTaoNhom);
                                 presenterLogicTaoNhom.XuLyTaoNhom(edt_taonhom_tennhom,rbnt_taonhom_thunhap,rbnt_taonhom_chitieu,taikhoan_using);
-                                if (viewTaoNhom.getTrangThai() == true)
+                                if (viewTaoNhom.getTrangThai() == true) {
                                     dialog.cancel();
-                                LoadDSNhom(lv_chonnhom_dsnhom,taikhoan_using);
+                                    LoadDSNhom(lv_chonnhom_dsnhom,taikhoan_using);
+                                }
+
                             }
                         });
 

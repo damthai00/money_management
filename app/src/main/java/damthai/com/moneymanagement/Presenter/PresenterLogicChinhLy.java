@@ -110,6 +110,16 @@ public class PresenterLogicChinhLy implements PresenterImpChinhLy {
         }
     }
 
+   public boolean KiemTraNhomSuDung(TaiKhoan taiKhoan, Nhom nhom)
+    {
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<GiaoDich> listGD = dbManager.getGiaoDich(taiKhoan.getMataikhoan());
+        for(int i = 0;i<listGD.size();i++)
+            if(nhom.getManhom() ==listGD.get(i).getNhom())
+                return true;
+        return false;
+    }
+
     @Override
     public ListView loadDuLiau_ListNhom(ListView listView,TaiKhoan taiKhoan){
         final DBManager dbManager = new DBManager(MainActivity.getInstance());

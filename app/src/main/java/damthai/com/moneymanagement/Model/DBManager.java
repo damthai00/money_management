@@ -264,4 +264,10 @@ public class  DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteGiaoDich(GiaoDich giaoDich)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_GIAODICH,"magiaodich = " +giaoDich.getMagiaodich(),null );
+        db.close();
+    }
 }
