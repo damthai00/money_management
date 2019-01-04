@@ -18,6 +18,7 @@ public class  DBManager extends SQLiteOpenHelper {
     private static final String TABLE_TAIKHOAN = "tai_khoan";
     private static final String TABLE_GIAODICH = "giao_dich";
     private static final String TABLE_NHOM = "nhom";
+    private static final String TABLE_CHUYENDOI= "chuyendoi";
 
     private static final String ID = "mataikhoan";
     private static final String NAME = "tentaikhoan";
@@ -48,7 +49,7 @@ public class  DBManager extends SQLiteOpenHelper {
             "manhom" +" integer primary key, "+
             "tennhom" +" TEXT, "+
             "loai" +" integer, "+
-            "mataikhoan" +" TEXT) ";
+            "mataikhoan" +" integer) ";
 
     private String SQLQuery_CREATETABLE_GIAODICH = " CREATE TABLE "+ " giao_dich "+" ("+
             "magiaodich" +" integer primary key, "+
@@ -59,10 +60,21 @@ public class  DBManager extends SQLiteOpenHelper {
             "hinhthucphi" + " TEXT, " +
             "mataikhoan" + " integer) ";
 
+    private String SQLQuery_CREATETABLE_CHUYENDOI = " CREATE TABLE "+ " chuyendoi "+" ("+
+            "machuyendoi" +" integer primary key, "+
+            "sotien" +" integer, "+
+            "phi" +" integer, "+
+            "loaiphi" +" TEXT, "+
+            "hinhthuc" +" TEXT, "+
+            "ngaychuyendoi" +" TEXT, "+
+            "ghichu" +" TEXT, "+
+            "mataikhoan" + " integer) ";
+
 
     private String SQL_Query_SELECT_ALL_TAIKHOAN = "SELECT * FROM " + TABLE_TAIKHOAN;
     private String SQL_Query_SELECT_ALL_NHOM = "SELECT * FROM " + TABLE_NHOM;
     private String SQL_Query_SELECT_ALL_GIAODICH = "SELECT * FROM " + TABLE_GIAODICH;
+    private String SQL_Query_SELECT_ALL_CHUYENDOI = "SELECT * FROM " + TABLE_CHUYENDOI;
 
 
 
@@ -71,6 +83,7 @@ public class  DBManager extends SQLiteOpenHelper {
         db.execSQL(SQLQuery_CREATETABLE_TAIKHOAN);
         db.execSQL(SQLQuery_CREATETABLE_NHOM);
         db.execSQL(SQLQuery_CREATETABLE_GIAODICH);
+        db.execSQL(SQLQuery_CREATETABLE_CHUYENDOI);
     }
 
     @Override
@@ -270,4 +283,83 @@ public class  DBManager extends SQLiteOpenHelper {
         db.delete(TABLE_GIAODICH,"magiaodich = " +giaoDich.getMagiaodich(),null );
         db.close();
     }
+
+    //Xử lý chuyển đổi---------------------------------------------------------------------------
+
+    public ArrayList<ChuyenDoi> getChuyenDoi(int ma_tai_khoan){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor  = db.rawQuery(SQL_Query_SELECT_ALL_CHUYENDOI,null);
+        if(cursor == null)
+            return null;
+        int indexMaChuyenDoi = cursor.getColumnIndex("machuyendoi");
+        int indexSoTien = cursor.getColumnIndex("sotien");
+        int indexPhi = cursor.getColumnIndex("phi");
+        int indexLoaiPhi = cursor.getColumnIndex("loaiphi");
+        int indexHinhThuc = cursor.getColumnIndex("hinhthuc");
+        int indexNgayChuyenDoi = cursor.getColumnIndex("ngaychuyendoi");
+        int indexGhiChu = cursor.getColumnIndex("ghichu");
+
+        int indexMataikhoan = cursor.getColumnIndex("mataikhoan");
+        int machuyendoi,mataikhoan;
+        long sotien,phi;
+        String loaiphi,hinhthuc,ngaychuyendoi,ghichu;
+
+        cursor.moveToFirst();
+        ArrayList<ChuyenDoi> list = new ArrayList<>();
+        while (!cursor.isAfterLast()) {
+            if (cursor.getInt(indexMataikhoan) != ma_tai_khoan)
+                cursor.moveToNext();
+            else {
+                machuyendoi = cursor.getInt(indexMaChuyenDoi);
+                sotien = cursor.getLong(indexSoTien);
+                phi = cursor.getLong(indexPhi);
+                loaiphi =cursor.getString(indexLoaiPhi);
+                hinhthuc = cursor.getString(indexHinhThuc);
+                ngaychuyendoi = cursor.getString(indexNgayChuyenDoi);
+                ghichu = cursor.getString(indexGhiChu);
+                mataikhoan = cursor.getInt(indexMataikhoan);
+                list.add(new ChuyenDoi(machuyendoi, sotien, phi, loaiphi, hinhthuc,ngaychuyendoi,ghichu, mataikhoan));
+                cursor.moveToNext();
+            }
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+
+    public void addChuyenDoi(ChuyenDoi chuyenDoi){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("sotien",chuyenDoi.getSotien());
+        values.put("phi",chuyenDoi.getPhi());
+        values.put("loaiphi",chuyenDoi.getLoaiphi());
+        values.put("hinhthuc",chuyenDoi.getHinhthuc());
+        values.put("ngaychuyendoi",chuyenDoi.getNgaychuyendoi());
+        values.put("ghichu",chuyenDoi.getGhichu());
+        values.put("mataikhoan",chuyenDoi.getMataikhoan());
+        db.insert(TABLE_CHUYENDOI,null,values);
+        db.close();
+    }
+
+    public void updateChuyenDoi(ChuyenDoi chuyenDoi) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("sotien",chuyenDoi.getSotien());
+        contentValues.put("phi",chuyenDoi.getPhi());
+        contentValues.put("loaiphi",chuyenDoi.getLoaiphi());
+        contentValues.put("hinhthuc",chuyenDoi.getHinhthuc());
+        contentValues.put("ngaychuyendoi",chuyenDoi.getNgaychuyendoi());
+        contentValues.put("ghichu",chuyenDoi.getGhichu());
+        contentValues.put("mataikhoan",chuyenDoi.getMataikhoan());
+        db.update(TABLE_CHUYENDOI,contentValues,"machuyendoi ="+chuyenDoi.getMachuyendoi(),null);
+        db.close();
+    }
+
+    public void deleteChuyenDoi(ChuyenDoi chuyenDoi)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_CHUYENDOI,"machuyendoi = " +chuyenDoi.getMachuyendoi(),null );
+        db.close();
+    }
+
 }

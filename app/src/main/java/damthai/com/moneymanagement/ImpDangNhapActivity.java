@@ -119,6 +119,23 @@ public class ImpDangNhapActivity extends AppCompatActivity implements ViewImpDan
         KT = 0;
     }
 
+    @Override
+    public void TenDangNhapCoKhoangTrang() {
+        Toast.makeText(ImpDangNhapActivity.this,"Tên đăng nhập có khoảng trắng!", Toast.LENGTH_SHORT).show();
+        KT = 0;
+    }
+
+    @Override
+    public void MatKhauCoKhoangTrang() {
+        Toast.makeText(ImpDangNhapActivity.this,"Mật khẩu có khoảng trắng!", Toast.LENGTH_SHORT).show();
+        KT = 0;
+    }
+
+    @Override
+    public void TaiKhoanDaTonTai() {
+        Toast.makeText(ImpDangNhapActivity.this,"Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
+        KT = 0;
+    }
 
 
 }

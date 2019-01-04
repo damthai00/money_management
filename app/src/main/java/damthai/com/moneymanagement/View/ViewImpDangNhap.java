@@ -7,5 +7,8 @@ public interface ViewImpDangNhap {
     void DangNhapThatBai();
     void DangKiThanhCong();
     void DangKiThatBai();
+    void TenDangNhapCoKhoangTrang();
+    void MatKhauCoKhoangTrang();
+    void TaiKhoanDaTonTai();
 
 }

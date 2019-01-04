@@ -51,22 +51,36 @@ public class PresenterLogicDangNhap implements PresenterImpDangNhap {
         if (user.equals("") || pass.equals(""))
             viewImpDangNhap.DangKiThatBai();
         else {
-            int dem = 0;
-            for (int i=0;i<list.size();i++)
-            {
-                if(user.equals(list.get(i).getTentaikhoan())) {
-                    viewImpDangNhap.DangKiThatBai();
-                    dem = 1;
+            int dem1 = 0;
+            for(int i =0;i<user.length();i++)
+                if(user.charAt(i) == ' '){
+                dem1 =1;
+                viewImpDangNhap.TenDangNhapCoKhoangTrang();
+                break;
+                }
+            for(int i =0;i<pass.length();i++)
+                if(pass.charAt(i) == ' '){
+                    dem1 =1;
+                    viewImpDangNhap.MatKhauCoKhoangTrang();
                     break;
                 }
-            }
-            if(dem ==0)
-            {
-                TaiKhoan taiKhoan = new TaiKhoan();
-                taiKhoan.setTentaikhoan(user);
-                taiKhoan.setMatkhau(pass);
-                dbManager.addTaiKhoan(taiKhoan);
-                viewImpDangNhap.DangKiThanhCong();
+
+                if(dem1 == 0) {
+                int dem = 0;
+                for (int i = 0; i < list.size(); i++) {
+                    if (user.equals(list.get(i).getTentaikhoan())) {
+                        viewImpDangNhap.TaiKhoanDaTonTai();
+                        dem = 1;
+                        break;
+                    }
+                }
+                if (dem == 0) {
+                    TaiKhoan taiKhoan = new TaiKhoan();
+                    taiKhoan.setTentaikhoan(user);
+                    taiKhoan.setMatkhau(pass);
+                    dbManager.addTaiKhoan(taiKhoan);
+                    viewImpDangNhap.DangKiThanhCong();
+                }
             }
         }
     }

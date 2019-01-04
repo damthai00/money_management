@@ -1,100 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/fragment_chuyendoi">
-
-
+    android:layout_width="350dp"
+    android:layout_height="400dp">
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/txt_dialog_sua_chuyendoi_ten"
+        android:textSize="30dp"
+        android:text="Chuyển tiền"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SỐ DƯ"
-        android:textSize="15dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:visibility="gone">
-        <TextView
-            android:id="@+id/txt_chuyendoi_taikhoanthe"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="TK Thẻ"
-            android:textSize="12dp"
-            android:layout_marginLeft="30dp"/>
-        <EditText
-            android:id="@+id/edt_chuyendoi_taikhoanthe"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:enabled="false"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VNĐ"
-            android:textSize="15dp"/>
-    </LinearLayout>
+        android:layout_gravity="center"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:visibility="gone">
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Tiền mặt: "
-            android:textSize="12dp"
-            android:layout_marginLeft="30dp"/>
-        <EditText
-            android:id="@+id/edt_chuyendoi_tienmat"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:enabled="false"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VNĐ"
-            android:textSize="15dp"/>
-    </LinearLayout>
-
-    <LinearLayout
+        android:id="@+id/linear_hinhthuc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:visibility="gone">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hình thức: "
-            android:textSize="20dp"/>
+            android:textSize="17dp"/>
+
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
             <RadioButton
-                android:id="@+id/rbnt_chuyendoi_ruttien"
+                android:id="@+id/rbnt_dialog_sua_chuyendoi_ruttien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rút tiền"
-                android:layout_marginLeft="20dp"/>/>
+                android:layout_marginLeft="15dp"
+                android:enabled="false"/>
 
             <RadioButton
-                android:id="@+id/rbnt_chuyendoi_chuyentien"
+                android:id="@+id/rbnt_dialog_sua_chuyendoi_chuyentien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chuyển tiền"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="15dp"
+                android:enabled="false"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -110,14 +60,15 @@
             android:text="Số tiền: "
             android:textSize="15dp"/>
         <EditText
-            android:id="@+id/edt_chuyendoi_sotien"
+            android:id="@+id/edt_dialog_sua_chuyendoi_sotien"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:gravity="right"
-            android:ems="10"
             android:inputType="number"
-            android:maxLength="15" />
+            android:maxLength="15"
+            android:ems="10"
+            android:enabled="false"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,17 +85,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phí: "
-            android:textSize="15dp"/>
+            android:text="Phí: " />
         <EditText
-            android:id="@+id/edt_chuyendoi_phi"
-            android:layout_width="100dp"
+            android:id="@+id/edt_dialog_sua_chuyendoi_phi"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:gravity="right"
-            android:ems="10"
+            android:inputType="number"
             android:maxLength="9"
-            android:inputType="number"/>
+            android:ems="10"
+            android:enabled="false"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -155,18 +106,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="left"
-            android:layout_marginLeft="15dp">
+            android:layout_marginLeft="10dp">
             <RadioButton
-                android:id="@+id/rbnt_chuyendoi_tienmat"
+                android:id="@+id/rbnt_dialog_sua_chuyendoi_tiemmat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tiền mặt"
-                android:checked="true"/>
+                android:checked="true"
+                android:enabled="false"/>
             <RadioButton
-                android:id="@+id/rbnt_chuyendoi_taikhoanthe"
+                android:id="@+id/rbnt_dialog_sua_chuyendoi_taikhoanthe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TK Thẻ" />
+                android:text="TK Thẻ"
+                android:enabled="false"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -177,15 +130,16 @@
         android:gravity="center">
         <TextView
             android:text="Ghi chú: "
-            android:layout_width="80dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/edt_chuyendoi_ghichu"
+            android:id="@+id/edt_dialog_sua_chuyendoi_ghichu"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:lines="1"
             android:maxLines="1"
-            android:maxLength="50"/>
+            android:maxLength="50"
+            android:enabled="false"/>
     </LinearLayout>
 
     <LinearLayout
@@ -195,49 +149,48 @@
         android:gravity="center">
         <TextView
             android:text="Ngày: "
-            android:layout_width="80dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content" />
         <EditText
-            android:id="@+id/edt_chuyendoi_ngaychuyendoi"
+            android:id="@+id/edt_dialog_sua_chuyendoi_ngaychuyendoi"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:enabled="false"/>
+            android:enabled="false" />
         <Button
-            android:id="@+id/bnt_chuyendoi_chonngay"
+            android:id="@+id/bnt_dialog_sua_chuyendoi_chonngay"
             android:text="Chọn ngày"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
-        <TextView
-            android:text="Lịch sử chuyển đổi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
         <Button
-            android:id="@+id/bnt_chuyendoi_xacnhan"
+            android:id="@+id/bnt_dialog_sua_chuyendoi_huy"
+            android:text="Hủy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/bnt_dialog_sua_chuyendoi_sua"
+            android:text="Sửa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bnt_dialog_sua_chuyendoi_xoa"
+            android:text="Xóa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bnt_dialog_sua_chuyendoi_xacnhan"
             android:text="Xác Nhận"
-            android:textSize="10dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/lv_danhsach_chuyendoi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </ListView>
-    </LinearLayout>
-
 </LinearLayout>

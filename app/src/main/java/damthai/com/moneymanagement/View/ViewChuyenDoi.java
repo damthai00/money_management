@@ -7,6 +7,16 @@ import damthai.com.moneymanagement.MainActivity;
 
 public class ViewChuyenDoi implements ViewIpmChuyenDoi {
 
+    private boolean TrangThai = false;
+
+    public boolean getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        TrangThai = trangThai;
+    }
+
     ViewChuyenDoi(){
     }
     @Override
@@ -31,5 +41,28 @@ public class ViewChuyenDoi implements ViewIpmChuyenDoi {
     public void ChuaNhapSoTienChuyenDoi()
     {
         Toast.makeText(MainActivity.getInstance(),"Chưa nhập số tiền chuyển đổi!",Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void ChuaNhapSoTienChuyenDoiMoi() {
+        Toast.makeText(MainActivity.getInstance(),"Chưa nhập số tiền chuyển đổi!",Toast.LENGTH_SHORT).show();
+        TrangThai = false;
+    }
+
+    @Override
+    public void SuaChuyenDoiThanhCong() {
+        Toast.makeText(MainActivity.getInstance(),"Sửa đổi thành công!",Toast.LENGTH_SHORT).show();
+        TrangThai = true;
+    }
+    @Override public void None()
+    {
+        TrangThai = true;
+    }
+
+    @Override
+    public void XoaThanhCong() {
+        Toast.makeText(MainActivity.getInstance(),"Xóa thành công!",Toast.LENGTH_SHORT).show();
+        TrangThai = true;
     }
 }
