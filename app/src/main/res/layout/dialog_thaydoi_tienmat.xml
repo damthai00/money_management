@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="match_parent"
     android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
             android:text="Tiền mặt: " />
         <EditText
             android:id="@+id/edt_chinhly_dialog_hientai_tienmat"
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:enabled="false"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:text="VNĐ"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
             android:text="Thay đổi: " />
         <EditText
             android:id="@+id/edt_chinhly_dialog_thaydoi_tienmat"
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:ems="10"
             android:inputType="number"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:text="VNĐ"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
     </LinearLayout>
 
     <LinearLayout

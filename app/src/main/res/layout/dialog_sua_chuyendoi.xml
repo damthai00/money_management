@@ -20,10 +20,9 @@
         android:gravity="center"
         android:visibility="gone">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:text="Hình thức: "
-            android:textSize="17dp"/>
+            android:text="Hình thức: " />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -32,18 +31,16 @@
             android:gravity="center">
             <RadioButton
                 android:id="@+id/rbnt_dialog_sua_chuyendoi_ruttien"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="Rút tiền"
-                android:layout_marginLeft="15dp"
                 android:enabled="false"/>
 
             <RadioButton
                 android:id="@+id/rbnt_dialog_sua_chuyendoi_chuyentien"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="Chuyển tiền"
-                android:layout_marginLeft="15dp"
                 android:enabled="false"/>
         </RadioGroup>
     </LinearLayout>
@@ -55,22 +52,20 @@
         android:gravity="center"
         android:layout_marginTop="5dp">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Số tiền: "
-            android:textSize="15dp"/>
+            android:text="Số tiền: " />
         <EditText
             android:id="@+id/edt_dialog_sua_chuyendoi_sotien"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
             android:gravity="right"
             android:inputType="number"
             android:maxLength="15"
             android:ems="10"
             android:enabled="false"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:text="VNĐ"
             android:textSize="12dp"/>
@@ -83,21 +78,20 @@
         android:gravity="center"
         android:layout_marginTop="5dp">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:text="Phí: " />
         <EditText
             android:id="@+id/edt_dialog_sua_chuyendoi_phi"
-            android:layout_width="80dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:gravity="right"
             android:inputType="number"
             android:maxLength="9"
             android:ems="10"
             android:enabled="false"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:text="VNĐ"
             android:textSize="12dp"/>
@@ -105,21 +99,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="left"
-            android:layout_marginLeft="10dp">
+            android:gravity="left">
             <RadioButton
                 android:id="@+id/rbnt_dialog_sua_chuyendoi_tiemmat"
-                android:layout_width="wrap_content"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:text="Tiền mặt"
                 android:checked="true"
-                android:enabled="false"/>
+                android:enabled="false"
+                android:textSize="13dp"/>
             <RadioButton
                 android:id="@+id/rbnt_dialog_sua_chuyendoi_taikhoanthe"
-                android:layout_width="wrap_content"
+                android:layout_width="85dp"
                 android:layout_height="wrap_content"
                 android:text="TK Thẻ"
-                android:enabled="false"/>
+                android:enabled="false"
+                android:textSize="13dp"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -130,11 +125,11 @@
         android:gravity="center">
         <TextView
             android:text="Ghi chú: "
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/edt_dialog_sua_chuyendoi_ghichu"
-            android:layout_width="250dp"
+            android:layout_width="235dp"
             android:layout_height="wrap_content"
             android:lines="1"
             android:maxLines="1"
@@ -149,19 +144,20 @@
         android:gravity="center">
         <TextView
             android:text="Ngày: "
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/edt_dialog_sua_chuyendoi_ngaychuyendoi"
-            android:layout_width="150dp"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:enabled="false" />
         <Button
             android:id="@+id/bnt_dialog_sua_chuyendoi_chonngay"
             android:text="Chọn ngày"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
-            android:enabled="false"/>
+            android:enabled="false"
+            android:textSize="14dp"/>
     </LinearLayout>
 
     <LinearLayout
