@@ -59,10 +59,15 @@ public class ChuyenDoiAdapter extends BaseAdapter {
         txt_danh_sach_chuyendoi_ghichu.setText(dsChuyenDoi.get(position).getGhichu());
         txt_danh_sach_chuyendoi_sotien.setText(decimalFormat.format(dsChuyenDoi.get(position).getSotien()));
         txt_danh_sach_chuyendoi_phi.setText(decimalFormat.format(dsChuyenDoi.get(position).getPhi()));
-        if(dsChuyenDoi.get(position).getLoaiphi().equals("taikhoanthe"))
-            txt_danh_sach_chuyendoi_loaiphi.setText("Tài khoản thẻ");
-        else   if(dsChuyenDoi.get(position).getLoaiphi().equals("tienmat"))
-            txt_danh_sach_chuyendoi_loaiphi.setText("Tiền mặt");
+        if(dsChuyenDoi.get(position).getPhi()==0)
+            txt_danh_sach_chuyendoi_loaiphi.setText("");
+        else  {
+            if(dsChuyenDoi.get(position).getLoaiphi().equals("taikhoanthe"))
+                txt_danh_sach_chuyendoi_loaiphi.setText("TK Thẻ");
+            else if(dsChuyenDoi.get(position).getLoaiphi().equals("tienmat"))
+                txt_danh_sach_chuyendoi_loaiphi.setText("Tiền mặt");
+        }
         return convertView;
     }
 }
+

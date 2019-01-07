@@ -3,9 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp"
-    android:paddingTop="10dp"
     >
 
     <TextView
@@ -13,7 +10,9 @@
         android:text="20/11/2018"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left" />
+        android:gravity="left"
+        android:textColor="@color/color_ngay_thang"
+        android:textSize="12dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,6 +44,8 @@
     <TextView
         android:id="@+id/txt_danhsach_giaoidich_ghichu"
         android:layout_width="150dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_den"
+        android:textSize="12dp"/>
 
 </LinearLayout>

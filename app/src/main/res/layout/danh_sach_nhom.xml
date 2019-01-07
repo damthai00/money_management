@@ -15,7 +15,7 @@
             android:text="Tên nhóm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_red_dark"/>
+            android:textColor="@color/color_ten_nhom"/>
         <TextView
             android:id="@+id/txt_dsnhom_loai"
             android:textSize="13dp"

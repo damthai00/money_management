@@ -10,7 +10,8 @@
         android:text="02/02/2019"
         android:textSize="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_ngay_thang"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,14 +21,16 @@
             android:text="chuyển tiền"
             android:textSize="16dp"
             android:layout_width="100dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_ten_nhom"/>
         <TextView
             android:id="@+id/txt_danh_sach_chuyendoi_sotien"
             android:text="10000000"
             android:textSize="15dp"
             android:gravity="right"
             android:layout_width="120dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_mau_tien"/>
         <TextView
             android:textSize="10dp"
             android:text="VNĐ"
@@ -41,8 +44,9 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/txt_danh_sach_chuyendoi_ghichu"
-            android:text="chuyển tiền"
+            android:text="ghi chú"
             android:textSize="12dp"
+            android:textColor="@color/color_den"
             android:layout_width="100dp"
             android:layout_height="wrap_content" />
         <TextView
@@ -51,7 +55,8 @@
             android:textSize="12dp"
             android:gravity="right"
             android:layout_width="120dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_mau_tien"/>
         <TextView
             android:textSize="8dp"
             android:text="VNĐ"
@@ -60,7 +65,7 @@
         <TextView
             android:id="@+id/txt_danh_sach_chuyendoi_loaiphi"
             android:textSize="10dp"
-            android:text="(tài khoản thẻ)"
+            android:text="(TK Thẻ)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"/>

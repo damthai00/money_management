@@ -17,7 +17,8 @@
             android:text="SỐ DƯ"
             android:textSize="20dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:textColor="@color/color_item"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,24 +30,25 @@
                 android:layout_height="wrap_content"
                 android:text="TK Thẻ"
                 android:textSize="15dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/color_item"/>
             <EditText
                 android:id="@+id/edt_chinhly_taikhoanthe"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="1000000000"
                 android:gravity="right"
-
+                android:textColor="@color/color_mau_tien"
                 android:inputType="number"
                 android:enabled="false"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:text="VNĐ"
                 android:textSize="15dp"/>
             <Button
                 android:id="@+id/bnt_chinhly_thaydoi_tkt"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:text="Thay đổi"
                 android:textSize="12dp"/>
@@ -62,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:text="Tiền mặt: "
                 android:textSize="15dp"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/color_item"/>
             <EditText
                 android:id="@+id/edt_chinhly_tienmat"
                 android:layout_width="150dp"
@@ -70,15 +73,16 @@
                 android:text="1000000000"
                 android:gravity="right"
                 android:inputType="number"
-                android:enabled="false"/>
+                android:enabled="false"
+                android:textColor="@color/color_mau_tien"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:text="VNĐ"
                 android:textSize="15dp"/>
             <Button
                 android:id="@+id/bnt_chinhly_thaydoi_tm"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:text="Thay đổi"
                 android:textSize="12dp"/>
@@ -89,27 +93,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:gravity="center">
 
         <TextView
-            android:layout_width="120dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="Tổng : "
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"/>
+            android:textSize="25dp"
+            android:textColor="@color/color_item"/>
         <EditText
             android:id="@+id/edt_chinhly_tong"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="10000000"
             android:gravity="right"
-            android:layout_marginLeft="10dp"
-            android:enabled="false"/>
+
+            android:enabled="false"
+            android:textColor="@color/color_mau_tien"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:text="VNĐ"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
     </LinearLayout>
 
 
@@ -131,7 +137,8 @@
                 android:text="Quản lý nhóm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="@color/color_item"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -156,7 +163,8 @@
                 android:text="Tạo Nhóm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:textColor="@color/color_item"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,7 +176,8 @@
                 android:text="Đăng xuất"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:textColor="@color/color_mau_tien"/>
         </LinearLayout>
     </LinearLayout>
 

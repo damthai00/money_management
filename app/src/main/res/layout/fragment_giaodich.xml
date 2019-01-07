@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="50dp">
+        android:layout_marginBottom="15dp">
 
 
         <TextView
@@ -18,7 +18,9 @@
             android:layout_height="wrap_content"
             android:text="SỐ DƯ"
             android:textSize="20dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/color_item"
+            android:layout_marginTop="5dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="TK Thẻ"
                 android:textSize="15dp"
-                android:layout_marginLeft="30dp"/>
+                android:textColor="@color/color_item"/>
 
             <EditText
                 android:id="@+id/edt_giaodich_taikhoanthe"
@@ -38,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:text="1000000000"
                 android:gravity="right"
-                android:enabled="false"/>
+                android:enabled="false"
+                android:textColor="@color/color_mau_tien"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="Tiền mặt: "
                 android:textSize="15dp"
-                android:layout_marginLeft="30dp"/>
+                android:textColor="@color/color_item"/>
 
             <EditText
                 android:id="@+id/edt_giaodich_tienmat"
@@ -67,7 +70,8 @@
                 android:layout_height="wrap_content"
                 android:text="1000000000"
                 android:gravity="right"
-                android:enabled="false"/>
+                android:enabled="false"
+                android:textColor="@color/color_mau_tien"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,26 +83,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:text="DS giao dịch"
-            android:textSize="20dp"/>
+            android:textColor="@color/color_item"
+            android:textSize="20dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
             android:text="Lọc"
-            android:textSize="20dp"
-            android:layout_marginLeft="50dp"/>
+            android:textColor="@color/color_den"
+            android:textSize="20dp" />
+
         <Spinner
             android:id="@+id/spiner_giaodich_loc"
-            android:layout_width="match_parent"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:gravity="right">
-        </Spinner>
+            android:gravity="right"></Spinner>
 
     </LinearLayout>
 
@@ -109,8 +118,9 @@
 
         <ListView
             android:id="@+id/lv_giaodich_dsgiaodich"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
         </ListView>
     </LinearLayout>

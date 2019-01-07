@@ -10,6 +10,9 @@
     <color name="color_item">#0f6459</color>
     <color name="color_text_login">#ffffff</color>
     <color name="color_den">#000000</color>
+    <color name="color_app">#000000</color>
+    <color name="color_ngay_thang">#028987</color>
+    <color name="color_mau_tien">#93001d</color>
 
     <color name="background">#ffffff</color>
     <color name="color_background_bnt_dang_ki">#f2f2f2</color>
