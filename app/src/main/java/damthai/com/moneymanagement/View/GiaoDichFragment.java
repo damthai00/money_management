@@ -48,6 +48,7 @@ public class GiaoDichFragment extends Fragment {
     Nhom nhom_dc_chom;
     Nhom nhom;
     GiaoDich giaoDichDangChon;
+    EditText edt_giaodich_tongthu,edt_giaodich_tongchi;
 
     @Nullable
     @Override
@@ -57,6 +58,8 @@ public class GiaoDichFragment extends Fragment {
         edt_giaodich_tienmat = (EditText) view.findViewById(R.id.edt_giaodich_tienmat);
         lv_giaodich_dsgiaodich = (ListView) view.findViewById(R.id.lv_giaodich_dsgiaodich);
         spiner_giaodich_loc = (Spinner) view.findViewById(R.id.spiner_giaodich_loc);
+        edt_giaodich_tongthu = (EditText) view.findViewById(R.id.edt_giaodich_tongthu);
+        edt_giaodich_tongchi = (EditText) view.findViewById(R.id.edt_giaodich_tongchi);
         LoadDuLieu();
         return view;
     }
@@ -108,17 +111,43 @@ public class GiaoDichFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0) {
                     lv_giaodich_dsgiaodich = presenterLogicGiaoDich.GiaoDichTheoTuan(lv_giaodich_dsgiaodich,taikhoan_using.getMataikhoan());
+                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                    edt_giaodich_tongthu.setText(decimalFormat.format(presenterLogicGiaoDich.ThuNhapTuanNay(taikhoan_using.getMataikhoan())));
+                    edt_giaodich_tongchi.setText(decimalFormat.format(presenterLogicGiaoDich.ChiTieupTuanNay(taikhoan_using.getMataikhoan())));
                 }
-                if(position == 1)
-                  lv_giaodich_dsgiaodich = presenterLogicGiaoDich.GiaoDichTheoNgay(lv_giaodich_dsgiaodich,taikhoan_using.getMataikhoan());
-                if(position == 2)
-                    lv_giaodich_dsgiaodich = presenterLogicGiaoDich.GiaoDichTheoThang(lv_giaodich_dsgiaodich,taikhoan_using.getMataikhoan());
-                if(position == 4)
+                if(position == 1) {
+                    lv_giaodich_dsgiaodich = presenterLogicGiaoDich.GiaoDichTheoNgay(lv_giaodich_dsgiaodich, taikhoan_using.getMataikhoan());
+                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                    edt_giaodich_tongthu.setText(decimalFormat.format(presenterLogicGiaoDich.ThuNhapHomNay(taikhoan_using.getMataikhoan())));
+                    edt_giaodich_tongchi.setText(decimalFormat.format(presenterLogicGiaoDich.ChiTieuHomNay(taikhoan_using.getMataikhoan())));
+                }
+                if(position == 2) {
+                    lv_giaodich_dsgiaodich = presenterLogicGiaoDich.GiaoDichTheoThang(lv_giaodich_dsgiaodich, taikhoan_using.getMataikhoan());
+                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                    edt_giaodich_tongthu.setText(decimalFormat.format(presenterLogicGiaoDich.ThuNhapThangNay(taikhoan_using.getMataikhoan())));
+                    edt_giaodich_tongchi.setText(decimalFormat.format(presenterLogicGiaoDich.ChiTieupThangNay(taikhoan_using.getMataikhoan())));
+                }
+                if(position == 4){
                     lv_giaodich_dsgiaodich = presenterLogicGiaoDich.GiaoDichTheoThang_Truoc(lv_giaodich_dsgiaodich,taikhoan_using.getMataikhoan());
-                if(position == 3)
+                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                    edt_giaodich_tongthu.setText(decimalFormat.format(presenterLogicGiaoDich.ThuNhapThangTruoc(taikhoan_using.getMataikhoan())));
+                    edt_giaodich_tongchi.setText(decimalFormat.format(presenterLogicGiaoDich.ChiTieupThangTruoc(taikhoan_using.getMataikhoan())));
+                }
+
+                if(position == 3){
                     lv_giaodich_dsgiaodich = presenterLogicGiaoDich.GiaoDichTheoTuan_Truoc(lv_giaodich_dsgiaodich,taikhoan_using.getMataikhoan());
-                if(position == 5)
+                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                    edt_giaodich_tongthu.setText(decimalFormat.format(presenterLogicGiaoDich.ThuNhapTuanTruoc(taikhoan_using.getMataikhoan())));
+                    edt_giaodich_tongchi.setText(decimalFormat.format(presenterLogicGiaoDich.ChiTieupTuanTruoc(taikhoan_using.getMataikhoan())));
+                }
+
+                if(position == 5){
                     lv_giaodich_dsgiaodich = presenterLogicGiaoDich.loadDuLiau_DSGiaoDich(lv_giaodich_dsgiaodich,taikhoan_using.getMataikhoan());
+                    DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+                    edt_giaodich_tongthu.setText(decimalFormat.format(presenterLogicGiaoDich.TongThuNhap(taikhoan_using.getMataikhoan())));
+                    edt_giaodich_tongchi.setText(decimalFormat.format(presenterLogicGiaoDich.TongChiTieu(taikhoan_using.getMataikhoan())));
+                }
+
             }
 
             @Override
@@ -140,15 +169,19 @@ public class GiaoDichFragment extends Fragment {
                 }
                 if(spiner_giaodich_loc.getSelectedItemPosition()==2) {
                     giaoDich = presenterLogicGiaoDich.SuaGiaoDich_ThangNay(position, taikhoan_using.getMataikhoan());
+
                 }
                 if(spiner_giaodich_loc.getSelectedItemPosition()==5) {
                     giaoDich = presenterLogicGiaoDich.SuaGiaoDich_TatCa(position, taikhoan_using.getMataikhoan());
+
                 }
                 if(spiner_giaodich_loc.getSelectedItemPosition()==3) {
                     giaoDich = presenterLogicGiaoDich.SuaGiaoDich_TuanTruoc(position, taikhoan_using.getMataikhoan());
+
                 }
                 if(spiner_giaodich_loc.getSelectedItemPosition()==4) {
                     giaoDich = presenterLogicGiaoDich.SuaGiaoDich_ThangTruoc(position, taikhoan_using.getMataikhoan());
+
                 }
                 giaoDichDangChon = giaoDich;
                 nhom = presenterLogicGiaoDich.getNhom(giaoDich);

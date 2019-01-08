@@ -420,12 +420,306 @@ public class PresenterLogicGiaoDich implements PresenterImpGiaoDich {
                 }
             }
 
-
         taiKhoan_su_dung.setTienmat(tm);
         taiKhoan_su_dung.setTaikhoanthe(tkt);
         dbManager.updateTaikhoan(taiKhoan_su_dung);
         dbManager.deleteGiaoDich(giaoDich);
         viewImpGiaoDich.XoaThanhCong();
-
     }
+
+
+    public long ThuNhapHomNay(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH,0);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoNgay(simpleDateFormat.format(calendar.getTime()),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(i).getLoai() == 1)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+
+
+    public long ThuNhapHomQua(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH,-1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoNgay(simpleDateFormat.format(calendar.getTime()),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(i).getLoai() == 1)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+    public long ThuNhapThangNay(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoThang(simpleDateFormat.format(date),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 1)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+    public long ThuNhapThangTruoc(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH,-1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoThang(simpleDateFormat.format(calendar.getTime()),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 1)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+
+
+    public long ThuNhapTuanNay(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Date now =new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoTuan(simpleDateFormat.format(now),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 1)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+    public long ThuNhapTuanTruoc(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.WEEK_OF_YEAR,-1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoTuan(simpleDateFormat.format(calendar.getTime()),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 1)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+
+
+
+    public long ChiTieuHomNay(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoNgay(simpleDateFormat.format(date),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 2)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+    public long ChiTieuHomQua(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH,-1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoNgay(simpleDateFormat.format(calendar.getTime()),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 2)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+    public long ChiTieupTuanNay(int ma_tai_khoan)
+    {
+        long sotien =0;
+       Calendar calendar = Calendar.getInstance();
+       calendar.add(Calendar.WEEK_OF_YEAR,0);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoTuan(simpleDateFormat.format(calendar.getTime()),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 2)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+    public long ChiTieupTuanTruoc(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.WEEK_OF_YEAR,-1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoTuan(simpleDateFormat.format(calendar.getTime()),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 2)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+    public long ChiTieupThangNay(int ma_tai_khoan)
+    {
+        long sotien =0;
+       Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoThang(simpleDateFormat.format(date),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 2)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+    public long ChiTieupThangTruoc(int ma_tai_khoan)
+    {
+        long sotien =0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH,-1);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        ArrayList<GiaoDich> list = this.XapXepTheoThang(simpleDateFormat.format(calendar.getTime()),ma_tai_khoan);
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+        for(int i=0;i<list.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+            {
+                if(list.get(i).getNhom() == listNhom.get(j).getManhom()) {
+                    if (listNhom.get(j).getLoai() == 2)
+                        sotien = sotien + list.get(i).getSotien();
+                    break;
+                }
+            }
+
+        return sotien;
+    }
+
+
+    public long TongThuNhap(int ma_tai_khoan)
+    {
+        long sotien=0;
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<GiaoDich> listGiaoDich = dbManager.getGiaoDich(ma_tai_khoan);
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+
+        for(int i= 0;i<listGiaoDich.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+                if(listGiaoDich.get(i).getNhom()==listNhom.get(j).getManhom())
+                {
+                    if(listNhom.get(j).getLoai()==1)
+                        sotien = sotien + listGiaoDich.get(i).getSotien();
+                    break;
+                }
+     return sotien;
+    }
+
+    public long TongChiTieu(int ma_tai_khoan)
+    {
+        long sotien=0;
+        DBManager dbManager = new DBManager(MainActivity.getInstance());
+        ArrayList<GiaoDich> listGiaoDich = dbManager.getGiaoDich(ma_tai_khoan);
+        ArrayList<Nhom> listNhom = dbManager.getNhom(ma_tai_khoan);
+
+        for(int i= 0;i<listGiaoDich.size();i++)
+            for(int j = 0;j<listNhom.size();j++)
+                if(listGiaoDich.get(i).getNhom()==listNhom.get(j).getManhom())
+                {
+                    if(listNhom.get(j).getLoai()==2)
+                        sotien = sotien + listGiaoDich.get(i).getSotien();
+                    break;
+                }
+        return sotien;
+    }
+
+
 }

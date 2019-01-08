@@ -81,6 +81,64 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Thu:"
+                android:textColor="@color/color_thu_nhap"
+                android:textSize="15dp"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edt_giaodich_tongthu"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_thu_nhap"
+                android:textSize="14dp"
+                android:text="100000000"
+                android:gravity="right"/>
+            <TextView
+                android:text="VNĐ"
+                android:textSize="10dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Chi:"
+                android:textColor="@color/color_chi_tieu"
+                android:textSize="15dp"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/edt_giaodich_tongchi"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_chi_tieu"
+                android:textSize="14dp"
+                android:text="100000000"
+                android:gravity="right"/>
+            <TextView
+                android:text="VNĐ"
+                android:textSize="10dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
